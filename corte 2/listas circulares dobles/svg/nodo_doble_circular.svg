@@ -1,0 +1,46 @@
+<svg viewBox="0 0 520 220" xmlns="http://www.w3.org/2000/svg" style="font-family: Arial, sans-serif; background-color: white;">
+    <!-- Title -->
+    <text x="260" y="30" font-size="20" font-weight="bold" text-anchor="middle" fill="#333">Estructura del Nodo Doble Circular</text>
+
+    <defs>
+        <marker id="arrowPurple" markerWidth="8" markerHeight="8" refX="8" refY="4" orient="auto">
+            <path d="M0,0 L0,8 L8,4 z" fill="#6f42c1" />
+        </marker>
+        <marker id="arrowGray" markerWidth="8" markerHeight="8" refX="8" refY="4" orient="auto">
+            <path d="M0,0 L0,8 L8,4 z" fill="#495057" />
+        </marker>
+    </defs>
+
+    <!-- Node body: 3 sections -->
+    <g transform="translate(90, 65)">
+        <!-- Background rect -->
+        <rect x="0" y="0" width="340" height="60" rx="10" ry="10" fill="#e9ecef" stroke="#ced4da" stroke-width="2"/>
+        <!-- Colored section backgrounds -->
+        <rect x="1" y="1" width="111" height="58" rx="9" ry="0" fill="#ede7f6" stroke="none"/>
+        <rect x="229" y="1" width="110" height="58" rx="0" ry="9" fill="#f8f9fa" stroke="none"/>
+        <!-- Dividers -->
+        <line x1="113" y1="0" x2="113" y2="60" stroke="#ced4da" stroke-width="2"/>
+        <line x1="227" y1="0" x2="227" y2="60" stroke="#ced4da" stroke-width="2"/>
+        <!-- Labels -->
+        <text x="56" y="38" font-size="16" font-weight="bold" text-anchor="middle" fill="#6f42c1">prev</text>
+        <text x="170" y="40" font-size="20" font-weight="bold" text-anchor="middle" fill="#0056b3">Dato</text>
+        <text x="283" y="38" font-size="16" font-weight="bold" text-anchor="middle" fill="#495057">next</text>
+        <!-- Pointer dots -->
+        <circle cx="56" cy="50" r="4" fill="#6f42c1" />
+        <circle cx="283" cy="50" r="4" fill="#495057" />
+    </g>
+
+    <!-- prev arrow exits left -->
+    <path d="M 90 95 L 48 95" stroke="#6f42c1" stroke-width="2.5" marker-end="url(#arrowPurple)" fill="none"/>
+    <!-- next arrow exits right -->
+    <path d="M 430 95 L 472 95" stroke="#495057" stroke-width="2.5" marker-end="url(#arrowGray)" fill="none"/>
+
+    <!-- Explanations -->
+    <g transform="translate(30, 152)">
+        <text x="0" y="0" font-size="12" fill="#6f42c1">← prev: Enlace al nodo ANTERIOR</text>
+        <text x="175" y="0" font-size="12" fill="#6c757d">(el primer nodo apunta al último — cierra el ciclo hacia atrás)</text>
+        <text x="0" y="22" font-size="12" fill="#495057">     dato: El valor almacenado en el nodo</text>
+        <text x="0" y="44" font-size="12" fill="#495057">next →: Enlace al nodo SIGUIENTE</text>
+        <text x="175" y="44" font-size="12" fill="#6c757d">(el último nodo apunta al primero — cierra el ciclo hacia adelante)</text>
+    </g>
+</svg>

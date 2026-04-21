@@ -1,0 +1,136 @@
+<svg viewBox="0 0 1000 410" xmlns="http://www.w3.org/2000/svg" style="font-family: Arial, sans-serif; background-color: white;">
+    <defs>
+        <marker id="arrow" markerWidth="8" markerHeight="8" refX="8" refY="4" orient="auto">
+            <path d="M0,0 L0,8 L8,4 z" fill="#495057" />
+        </marker>
+        <marker id="arrowPurple" markerWidth="8" markerHeight="8" refX="8" refY="4" orient="auto">
+            <path d="M0,0 L0,8 L8,4 z" fill="#6f42c1" />
+        </marker>
+        <marker id="arrowRed" markerWidth="8" markerHeight="8" refX="8" refY="4" orient="auto">
+            <path d="M0,0 L0,8 L8,4 z" fill="#dc3545" />
+        </marker>
+        <marker id="arrowBlue" markerWidth="8" markerHeight="8" refX="8" refY="4" orient="auto">
+            <path d="M0,0 L0,8 L8,4 z" fill="#0056b3" />
+        </marker>
+        <marker id="arrowGreen" markerWidth="8" markerHeight="8" refX="8" refY="4" orient="auto">
+            <path d="M0,0 L0,8 L8,4 z" fill="#28a745" />
+        </marker>
+    </defs>
+
+    <!-- Title -->
+    <text x="480" y="25" font-size="18" font-weight="bold" text-anchor="middle" fill="#333">Eliminación de un Nodo en Lista Circular Doble</text>
+
+    <!-- ===== ANTES ===== -->
+    <text x="30" y="58" font-size="14" font-weight="bold" fill="#555">ANTES: Eliminar nodo B</text>
+
+    <!-- cabeza pointer -->
+    <text x="100" y="76" font-size="12" font-weight="bold" text-anchor="middle" fill="#0056b3">cabeza</text>
+    <path d="M 100 80 L 100 98" stroke="#0056b3" stroke-width="2" marker-end="url(#arrowBlue)" fill="none"/>
+    <!-- cola pointer -->
+    <text x="560" y="76" font-size="12" font-weight="bold" text-anchor="middle" fill="#28a745">cola</text>
+    <path d="M 560 80 L 560 98" stroke="#28a745" stroke-width="2" marker-end="url(#arrowGreen)" fill="none"/>
+    <!-- BORRAR label -->
+    <text x="310" y="74" font-size="12" text-anchor="middle" fill="#dc3545">BORRAR</text>
+    <path d="M 310 78 L 310 97" stroke="#dc3545" stroke-width="2" marker-end="url(#arrowRed)" fill="none"/>
+
+    <!-- Node A (cabeza) at x=40 -->
+    <g transform="translate(40, 100)">
+        <rect x="0" y="0" width="120" height="40" rx="5" ry="5" fill="#e9ecef" stroke="#0056b3" stroke-width="2"/>
+        <line x1="40" y1="0" x2="40" y2="40" stroke="#ced4da" stroke-width="1.5"/>
+        <line x1="80" y1="0" x2="80" y2="40" stroke="#ced4da" stroke-width="1.5"/>
+        <text x="20" y="25" font-size="11" text-anchor="middle" fill="#6f42c1">prev</text>
+        <text x="60" y="26" font-size="17" font-weight="bold" text-anchor="middle" fill="#333">A</text>
+        <text x="100" y="25" font-size="11" text-anchor="middle" fill="#495057">next</text>
+    </g>
+
+    <!-- Node B (to delete) at x=250 -->
+    <g transform="translate(250, 100)">
+        <rect x="0" y="0" width="120" height="40" rx="5" ry="5" fill="#f8d7da" stroke="#dc3545" stroke-width="2"/>
+        <line x1="40" y1="0" x2="40" y2="40" stroke="#dc3545" stroke-width="1.5"/>
+        <line x1="80" y1="0" x2="80" y2="40" stroke="#dc3545" stroke-width="1.5"/>
+        <text x="20" y="25" font-size="11" text-anchor="middle" fill="#dc3545">prev</text>
+        <text x="60" y="26" font-size="17" font-weight="bold" text-anchor="middle" fill="#dc3545">B</text>
+        <text x="100" y="25" font-size="11" text-anchor="middle" fill="#dc3545">next</text>
+    </g>
+    <!-- X marks on B -->
+    <line x1="258" y1="108" x2="362" y2="132" stroke="#dc3545" stroke-width="2"/>
+    <line x1="362" y1="108" x2="258" y2="132" stroke="#dc3545" stroke-width="2"/>
+
+    <!-- Node C (cola) at x=460 -->
+    <g transform="translate(460, 100)">
+        <rect x="0" y="0" width="120" height="40" rx="5" ry="5" fill="#d4edda" stroke="#28a745" stroke-width="2"/>
+        <line x1="40" y1="0" x2="40" y2="40" stroke="#28a745" stroke-width="1.5"/>
+        <line x1="80" y1="0" x2="80" y2="40" stroke="#28a745" stroke-width="1.5"/>
+        <text x="20" y="25" font-size="11" text-anchor="middle" fill="#6f42c1">prev</text>
+        <text x="60" y="26" font-size="17" font-weight="bold" text-anchor="middle" fill="#333">C</text>
+        <text x="100" y="25" font-size="11" text-anchor="middle" fill="#28a745">next</text>
+    </g>
+
+    <!-- ANTES: next arrows (y=130) -->
+    <path d="M 160 130 L 250 130" stroke="#495057" stroke-width="2" marker-end="url(#arrow)" fill="none"/>
+    <path d="M 370 130 L 460 130" stroke="#dc3545" stroke-width="2" stroke-dasharray="4,3" marker-end="url(#arrowRed)" fill="none"/>
+    <!-- ANTES: prev arrows (y=113) -->
+    <path d="M 250 113 L 160 113" stroke="#dc3545" stroke-width="2" stroke-dasharray="4,3" marker-end="url(#arrowRed)" fill="none"/>
+    <path d="M 460 113 L 370 113" stroke="#6f42c1" stroke-width="2" marker-end="url(#arrowPurple)" fill="none"/>
+    <!-- ANTES: circular next C→A (below) -->
+    <path d="M 580 130 C 630 200 10 200 40 130"
+          stroke="#495057" stroke-width="2" fill="none" marker-end="url(#arrow)" stroke-dasharray="5,3"/>
+    <!-- ANTES: circular prev A→C (above) -->
+    <path d="M 40 113 C -10 42 630 42 580 113"
+          stroke="#6f42c1" stroke-width="2" fill="none" marker-end="url(#arrowPurple)" stroke-dasharray="5,3"/>
+
+    <!-- ===== DESPUES ===== -->
+    <text x="30" y="228" font-size="14" font-weight="bold" fill="#555">DESPUES: B eliminado</text>
+
+    <!-- cabeza pointer -->
+    <text x="200" y="248" font-size="12" font-weight="bold" text-anchor="middle" fill="#0056b3">cabeza</text>
+    <path d="M 200 252 L 200 268" stroke="#0056b3" stroke-width="2" marker-end="url(#arrowBlue)" fill="none"/>
+    <!-- cola pointer -->
+    <text x="500" y="248" font-size="12" font-weight="bold" text-anchor="middle" fill="#28a745">cola</text>
+    <path d="M 500 252 L 500 268" stroke="#28a745" stroke-width="2" marker-end="url(#arrowGreen)" fill="none"/>
+
+    <!-- Node A (despues) at x=140 -->
+    <g transform="translate(140, 270)">
+        <rect x="0" y="0" width="120" height="40" rx="5" ry="5" fill="#e9ecef" stroke="#0056b3" stroke-width="2"/>
+        <line x1="40" y1="0" x2="40" y2="40" stroke="#ced4da" stroke-width="1.5"/>
+        <line x1="80" y1="0" x2="80" y2="40" stroke="#ced4da" stroke-width="1.5"/>
+        <text x="20" y="25" font-size="11" text-anchor="middle" fill="#6f42c1">prev</text>
+        <text x="60" y="26" font-size="17" font-weight="bold" text-anchor="middle" fill="#333">A</text>
+        <text x="100" y="25" font-size="11" text-anchor="middle" fill="#495057">next</text>
+    </g>
+
+    <!-- Node C (despues) at x=380 -->
+    <g transform="translate(380, 270)">
+        <rect x="0" y="0" width="120" height="40" rx="5" ry="5" fill="#d4edda" stroke="#28a745" stroke-width="2"/>
+        <line x1="40" y1="0" x2="40" y2="40" stroke="#28a745" stroke-width="1.5"/>
+        <line x1="80" y1="0" x2="80" y2="40" stroke="#28a745" stroke-width="1.5"/>
+        <text x="20" y="25" font-size="11" text-anchor="middle" fill="#6f42c1">prev</text>
+        <text x="60" y="26" font-size="17" font-weight="bold" text-anchor="middle" fill="#333">C</text>
+        <text x="100" y="25" font-size="11" text-anchor="middle" fill="#28a745">next</text>
+    </g>
+
+    <!-- DESPUES: next A→C (rojo nuevo directo) -->
+    <path d="M 260 300 L 380 300" stroke="#dc3545" stroke-width="2.5" marker-end="url(#arrowRed)" fill="none"/>
+    <!-- DESPUES: prev C→A (rojo nuevo directo) -->
+    <path d="M 380 284 L 260 284" stroke="#dc3545" stroke-width="2.5" marker-end="url(#arrowRed)" fill="none"/>
+
+    <!-- DESPUES: circular next C→A (below, dashed) -->
+    <path d="M 500 300 C 550 375 110 375 140 300"
+          stroke="#495057" stroke-width="2" fill="none" marker-end="url(#arrow)" stroke-dasharray="5,3"/>
+    <!-- DESPUES: circular prev A→C (above, dashed) -->
+    <path d="M 140 284 C 100 210 550 210 500 284"
+          stroke="#6f42c1" stroke-width="2" fill="none" marker-end="url(#arrowPurple)" stroke-dasharray="5,3"/>
+
+    <!-- Step annotations -->
+    <text x="650" y="255" font-size="13" font-weight="bold" fill="#333">Pasos:</text>
+    <text x="650" y="275" font-size="11" fill="#333">1. B.anterior.siguiente = B.siguiente</text>
+    <text x="668" y="292" font-size="11" fill="#333">→  A.next = C</text>
+    <text x="650" y="312" font-size="11" fill="#333">2. B.siguiente.anterior = B.anterior</text>
+    <text x="668" y="329" font-size="11" fill="#333">→  C.prev = A</text>
+    <text x="650" y="349" font-size="11" fill="#333">Gracias a prev, no se necesita</text>
+    <text x="650" y="366" font-size="11" fill="#333">buscar el nodo anterior: ¡O(1)!</text>
+
+    <!-- Red = new link indicator -->
+    <line x1="650" y1="387" x2="675" y2="387" stroke="#dc3545" stroke-width="2.5" marker-end="url(#arrowRed)"/>
+    <text x="681" y="391" font-size="11" fill="#dc3545">Enlace actualizado</text>
+</svg>

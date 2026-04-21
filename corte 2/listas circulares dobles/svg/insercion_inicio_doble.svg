@@ -1,0 +1,135 @@
+<svg viewBox="0 0 1000 410" xmlns="http://www.w3.org/2000/svg" style="font-family: Arial, sans-serif; background-color: white;">
+    <defs>
+        <marker id="arrow" markerWidth="8" markerHeight="8" refX="8" refY="4" orient="auto">
+            <path d="M0,0 L0,8 L8,4 z" fill="#495057" />
+        </marker>
+        <marker id="arrowPurple" markerWidth="8" markerHeight="8" refX="8" refY="4" orient="auto">
+            <path d="M0,0 L0,8 L8,4 z" fill="#6f42c1" />
+        </marker>
+        <marker id="arrowRed" markerWidth="8" markerHeight="8" refX="8" refY="4" orient="auto">
+            <path d="M0,0 L0,8 L8,4 z" fill="#dc3545" />
+        </marker>
+        <marker id="arrowBlue" markerWidth="8" markerHeight="8" refX="8" refY="4" orient="auto">
+            <path d="M0,0 L0,8 L8,4 z" fill="#0056b3" />
+        </marker>
+        <marker id="arrowGreen" markerWidth="8" markerHeight="8" refX="8" refY="4" orient="auto">
+            <path d="M0,0 L0,8 L8,4 z" fill="#28a745" />
+        </marker>
+    </defs>
+
+    <!-- Title -->
+    <text x="480" y="25" font-size="18" font-weight="bold" text-anchor="middle" fill="#333">Inserción al Inicio en Lista Circular Doble</text>
+
+    <!-- ===== ANTES ===== -->
+    <text x="30" y="58" font-size="14" font-weight="bold" fill="#555">ANTES:</text>
+
+    <!-- cabeza pointer -->
+    <text x="200" y="76" font-size="12" font-weight="bold" text-anchor="middle" fill="#0056b3">cabeza</text>
+    <path d="M 200 80 L 200 98" stroke="#0056b3" stroke-width="2" marker-end="url(#arrowBlue)" fill="none"/>
+    <!-- cola pointer -->
+    <text x="440" y="76" font-size="12" font-weight="bold" text-anchor="middle" fill="#28a745">cola</text>
+    <path d="M 440 80 L 440 98" stroke="#28a745" stroke-width="2" marker-end="url(#arrowGreen)" fill="none"/>
+
+    <!-- Node A (cabeza, antes) at x=140 -->
+    <g transform="translate(140, 100)">
+        <rect x="0" y="0" width="120" height="40" rx="5" ry="5" fill="#e9ecef" stroke="#0056b3" stroke-width="2"/>
+        <line x1="40" y1="0" x2="40" y2="40" stroke="#ced4da" stroke-width="1.5"/>
+        <line x1="80" y1="0" x2="80" y2="40" stroke="#ced4da" stroke-width="1.5"/>
+        <text x="20" y="25" font-size="11" text-anchor="middle" fill="#6f42c1">prev</text>
+        <text x="60" y="26" font-size="17" font-weight="bold" text-anchor="middle" fill="#333">A</text>
+        <text x="100" y="25" font-size="11" text-anchor="middle" fill="#495057">next</text>
+    </g>
+
+    <!-- Node B (cola, antes) at x=380 -->
+    <g transform="translate(380, 100)">
+        <rect x="0" y="0" width="120" height="40" rx="5" ry="5" fill="#d4edda" stroke="#28a745" stroke-width="2"/>
+        <line x1="40" y1="0" x2="40" y2="40" stroke="#28a745" stroke-width="1.5"/>
+        <line x1="80" y1="0" x2="80" y2="40" stroke="#28a745" stroke-width="1.5"/>
+        <text x="20" y="25" font-size="11" text-anchor="middle" fill="#6f42c1">prev</text>
+        <text x="60" y="26" font-size="17" font-weight="bold" text-anchor="middle" fill="#333">B</text>
+        <text x="100" y="25" font-size="11" text-anchor="middle" fill="#28a745">next</text>
+    </g>
+
+    <!-- ANTES: next arrows (y=130) -->
+    <path d="M 260 130 L 380 130" stroke="#495057" stroke-width="2" marker-end="url(#arrow)" fill="none"/>
+    <!-- ANTES: prev arrows (y=115) -->
+    <path d="M 380 115 L 260 115" stroke="#6f42c1" stroke-width="2" marker-end="url(#arrowPurple)" fill="none"/>
+    <!-- ANTES: circular next B→A (below) -->
+    <path d="M 500 130 C 545 195 110 195 140 130"
+          stroke="#495057" stroke-width="2" fill="none" marker-end="url(#arrow)" stroke-dasharray="5,3"/>
+    <!-- ANTES: circular prev A→B (above) -->
+    <path d="M 140 115 C 95 45 545 45 500 115"
+          stroke="#6f42c1" stroke-width="2" fill="none" marker-end="url(#arrowPurple)" stroke-dasharray="5,3"/>
+
+    <!-- ===== DESPUES ===== -->
+    <text x="30" y="228" font-size="14" font-weight="bold" fill="#555">DESPUES:</text>
+
+    <!-- nueva cabeza label -->
+    <text x="120" y="248" font-size="11" font-weight="bold" text-anchor="middle" fill="#ffc107">nueva cabeza</text>
+    <path d="M 120 252 L 120 268" stroke="#0056b3" stroke-width="2" marker-end="url(#arrowBlue)" fill="none"/>
+    <!-- cola label -->
+    <text x="560" y="248" font-size="12" font-weight="bold" text-anchor="middle" fill="#28a745">cola</text>
+    <path d="M 560 252 L 560 268" stroke="#28a745" stroke-width="2" marker-end="url(#arrowGreen)" fill="none"/>
+
+    <!-- Node X (NUEVO, cabeza) at x=60 -->
+    <g transform="translate(60, 270)">
+        <rect x="0" y="0" width="120" height="40" rx="5" ry="5" fill="#fff3cd" stroke="#ffc107" stroke-width="2"/>
+        <line x1="40" y1="0" x2="40" y2="40" stroke="#ffc107" stroke-width="1.5"/>
+        <line x1="80" y1="0" x2="80" y2="40" stroke="#ffc107" stroke-width="1.5"/>
+        <text x="20" y="25" font-size="11" text-anchor="middle" fill="#6f42c1">prev</text>
+        <text x="60" y="26" font-size="17" font-weight="bold" text-anchor="middle" fill="#333">X</text>
+        <text x="100" y="25" font-size="11" text-anchor="middle" fill="#495057">next</text>
+    </g>
+    <text x="120" y="325" font-size="11" font-weight="bold" text-anchor="middle" fill="#ffc107">NUEVO</text>
+
+    <!-- Node A at x=270 -->
+    <g transform="translate(270, 270)">
+        <rect x="0" y="0" width="120" height="40" rx="5" ry="5" fill="#e9ecef" stroke="#ced4da" stroke-width="2"/>
+        <line x1="40" y1="0" x2="40" y2="40" stroke="#ced4da" stroke-width="1.5"/>
+        <line x1="80" y1="0" x2="80" y2="40" stroke="#ced4da" stroke-width="1.5"/>
+        <text x="20" y="25" font-size="11" text-anchor="middle" fill="#6f42c1">prev</text>
+        <text x="60" y="26" font-size="17" font-weight="bold" text-anchor="middle" fill="#333">A</text>
+        <text x="100" y="25" font-size="11" text-anchor="middle" fill="#495057">next</text>
+    </g>
+
+    <!-- Node B (cola) at x=480 -->
+    <g transform="translate(480, 270)">
+        <rect x="0" y="0" width="120" height="40" rx="5" ry="5" fill="#d4edda" stroke="#28a745" stroke-width="2"/>
+        <line x1="40" y1="0" x2="40" y2="40" stroke="#28a745" stroke-width="1.5"/>
+        <line x1="80" y1="0" x2="80" y2="40" stroke="#28a745" stroke-width="1.5"/>
+        <text x="20" y="25" font-size="11" text-anchor="middle" fill="#6f42c1">prev</text>
+        <text x="60" y="26" font-size="17" font-weight="bold" text-anchor="middle" fill="#333">B</text>
+        <text x="100" y="25" font-size="11" text-anchor="middle" fill="#28a745">next</text>
+    </g>
+
+    <!-- DESPUES: next arrows (y=300) -->
+    <!-- X.next → A (NUEVO, rojo) -->
+    <path d="M 180 300 L 270 300" stroke="#dc3545" stroke-width="2.5" marker-end="url(#arrowRed)" fill="none"/>
+    <!-- A.next → B (gris) -->
+    <path d="M 390 300 L 480 300" stroke="#495057" stroke-width="2" marker-end="url(#arrow)" fill="none"/>
+
+    <!-- DESPUES: prev arrows (y=284) -->
+    <!-- A.prev → X (NUEVO, rojo) -->
+    <path d="M 270 284 L 180 284" stroke="#dc3545" stroke-width="2.5" marker-end="url(#arrowRed)" fill="none"/>
+    <!-- B.prev → A (púrpura) -->
+    <path d="M 480 284 L 390 284" stroke="#6f42c1" stroke-width="2" marker-end="url(#arrowPurple)" fill="none"/>
+
+    <!-- DESPUES: circular next B→X (below, dashed red) -->
+    <path d="M 600 300 C 650 375 30 375 60 300"
+          stroke="#dc3545" stroke-width="2" fill="none" marker-end="url(#arrowRed)" stroke-dasharray="6,3"/>
+    <!-- DESPUES: circular prev X→B (above, dashed purple) -->
+    <path d="M 60 284 C 15 210 650 210 600 284"
+          stroke="#6f42c1" stroke-width="2" fill="none" marker-end="url(#arrowPurple)" stroke-dasharray="6,3"/>
+
+    <!-- Step annotations -->
+    <text x="660" y="260" font-size="13" font-weight="bold" fill="#333">Pasos:</text>
+    <text x="660" y="280" font-size="11" fill="#333">1. nuevo.next = cabeza  (X → A)</text>
+    <text x="660" y="298" font-size="11" fill="#333">2. cabeza.prev = nuevo  (A.prev = X)</text>
+    <text x="660" y="316" font-size="11" fill="#333">3. cola.next = nuevo    (B.next = X)</text>
+    <text x="660" y="334" font-size="11" fill="#333">4. nuevo.prev = cola    (X.prev = B)</text>
+    <text x="660" y="352" font-size="11" fill="#333">5. cabeza = nuevo</text>
+
+    <!-- Red = new link indicator -->
+    <line x1="660" y1="375" x2="685" y2="375" stroke="#dc3545" stroke-width="2.5" marker-end="url(#arrowRed)"/>
+    <text x="691" y="379" font-size="11" fill="#dc3545">Enlace nuevo</text>
+</svg>
