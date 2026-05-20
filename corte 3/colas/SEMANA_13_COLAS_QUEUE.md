@@ -58,13 +58,13 @@ La diferencia clave es que una cola usa **dos punteros**: `entrada` (donde ingre
 
 ### ¿Cómo funciona en la práctica?
 
-Supón que agregas cuatro números a la cola uno por uno: primero el `10`, luego el `25`, luego el `8` y finalmente el `42`. Los elementos entran **por la izquierda** y salen **por la derecha**:
+Supón que agregas cuatro números a la cola uno por uno: primero el `10`, luego el `25`, luego el `8` y finalmente el `42`. Los elementos entran **por la derecha** y salen **por la izquierda**:
 
 ```
-ENQUEUE →  [ 42 ] [ 8 ] [ 25 ] [ 10 ]  → DEQUEUE
-             ↑                    ↑
-           entrada              salida
-        (último en entrar)  (primero en salir)
+DEQUEUE ←  [ 10 ] [ 25 ] [ 8 ] [ 42 ]  ← ENQUEUE
+              ↑                    ↑
+           salida               entrada
+       (primero en salir)   (último en entrar)
 ```
 
 Ahora, si empiezas a extraer elementos (operación `dequeue`), el orden de salida es el **mismo** al de entrada:
@@ -76,14 +76,14 @@ Ahora, si empiezas a extraer elementos (operación `dequeue`), el orden de salid
 4ª extracción → sale 42   (el último que entró, sale de último)
 ```
 
-| # | Elemento | Acción | Estado de la cola (entrada ← → salida) |
+| # | Elemento | Acción | Estado de la cola (salida ← → entrada) |
 | :---: | :---: | :--- | :--- |
 | 1 | `10` | enqueue | `10` |
-| 2 | `25` | enqueue | `25 — 10` |
-| 3 | `8`  | enqueue | `8 — 25 — 10` |
-| 4 | `42` | enqueue | `42 — 8 — 25 — 10` |
-| 5 | —    | dequeue → retorna `10` | `42 — 8 — 25` |
-| 6 | —    | dequeue → retorna `25` | `42 — 8` |
+| 2 | `25` | enqueue | `10 — 25` |
+| 3 | `8`  | enqueue | `10 — 25 — 8` |
+| 4 | `42` | enqueue | `10 — 25 — 8 — 42` |
+| 5 | —    | dequeue → retorna `10` | `25 — 8 — 42` |
+| 6 | —    | dequeue → retorna `25` | `8 — 42` |
 | 7 | —    | dequeue → retorna `8`  | `42` |
 | 8 | —    | dequeue → retorna `42` | *(vacía)* |
 
@@ -123,7 +123,21 @@ Se extrae el nodo apuntado por `salida`, el puntero `salida` avanza al siguiente
 
 ### 4.1 Estructura interna: Lista Enlazada Simple
 
-La Cola se implementa sobre una **Lista Enlazada Simple**: cada nodo guarda un dato y un puntero `siguiente` que apunta al próximo nodo hacia la salida. Se mantienen dos punteros externos — `entrada` al primer nodo de la cadena (el más nuevo) y `salida` al último (el más antiguo, próximo a salir) — lo que permite insertar y extraer en **O(1)** sin recorrer la lista.
+La Cola se implementa sobre una **Lista Enlazada Simple**: cada nodo guarda un dato y un puntero `siguiente` que apunta al próximo nodo hacia la entrada (del más antiguo al más nuevo). Se mantienen dos punteros externos — `salida` al primer nodo de la cadena (el más antiguo, próximo a salir) y `entrada` al último (el más nuevo, recién insertado) — lo que permite insertar y extraer en **O(1)** sin recorrer la lista.
+
+```
+cabeza/salida                          cola/entrada
+     ↓                                      ↓
+    [10] → [25] → [8] → [42] → null
+```
+
+> **¿Por qué la cola inserta por la derecha y no por la izquierda como una lista típica?**
+>
+> En una lista enlazada simple se suele insertar por la **cabeza** (izquierda), lo que hace que el elemento más nuevo quede siempre a la izquierda. Si además se extrae por la cabeza, el comportamiento es **LIFO** — es decir, una pila.
+>
+> La cola necesita comportamiento **FIFO**: el primero en entrar debe ser el primero en salir. Para lograrlo, inserta y extrae por **extremos opuestos**: extrae por la cabeza (`salida`, izquierda) e inserta por la cola (`entrada`, derecha). Así el elemento más antiguo siempre está a la izquierda y sale primero.
+>
+> Mantener un puntero a cada extremo (`salida` y `entrada`) es lo que hace posible que **ambas operaciones sean O(1)**. Sin el puntero `entrada`, insertar al final requeriría recorrer toda la lista — O(n).
 
 La clase `Nodo` de la semana anterior sirve sin modificaciones:
 
@@ -238,7 +252,7 @@ public class Main {
         System.out.println("dequeue() retorna: " + cola.dequeue()); // 10
         System.out.println("dequeue() retorna: " + cola.dequeue()); // 25
         cola.imprimir();
-        // Frente → 8 → 42 ← Final
+        // Salida → 8 → 42 ← Entrada
 
         System.out.println("\nNueva salida (peek): " + cola.peek()); // 8
         System.out.println("Tamaño: " + cola.size());               // 2
